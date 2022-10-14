@@ -1,0 +1,62 @@
+public void AddUserOrgs(int userId, int orgId)
+        {
+            string procName = "[dbo].[UserOrgs_Insert]";
+
+            _dataProvider.ExecuteNonQuery(procName,
+              inputParamMapper: delegate (SqlParameterCollection col)
+              {
+                  col.AddWithValue("@UserId", userId);
+                  col.AddWithValue("@OrgId", orgId);
+              },
+              returnParameters: null);
+        }
+        
+        private static DataTable MapRoles(bool isRestaurantOrg, int InviteTypeId)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("RoleId", typeof(int));
+
+            if (InviteTypeId == 1)
+            {
+                DataRow drRole = dt.NewRow();
+                drRole.SetField(0, 2);
+                dt.Rows.Add(drRole);
+            }
+            else if (InviteTypeId == 2)
+            {
+                DataRow drRole = dt.NewRow();
+                drRole.SetField(0, 3);
+                dt.Rows.Add(drRole);
+            }
+            else if (InviteTypeId == 3)
+            {
+                DataRow drRole = dt.NewRow();
+                drRole.SetField(0, 4);
+                dt.Rows.Add(drRole);
+            }
+            else
+            {
+                DataRow dr = dt.NewRow();
+                dr.SetField(0, 5);
+                dt.Rows.Add(dr);
+            }
+            if (isRestaurantOrg == true)
+            {
+                DataRow drr = dt.NewRow();
+                drr.SetField(0, 2);
+                dt.Rows.Add(drr);
+            }
+
+            return dt;
+        }
+        
+        public void ConfirmUser(string token)
+        {
+            string procName = "[dbo].[Users_ConfirmToken]";
+            _dataProvider.ExecuteNonQuery(procName,
+                inputParamMapper: delegate (SqlParameterCollection col)
+                {
+                    col.AddWithValue("@Token", token);
+                },
+                returnParameters: null);
+        }
