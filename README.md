@@ -1,1 +1,1 @@
-# Cartecode
+Carte is an innovative digital menu and ordering platform built for restaurants with the purpose of improving diner experience and reducing order friction. Carte is an MVP and due to the proprietary nature of the code, I can only provide snippets of the code I wrote. This repository contains React, .NET, and SQL code for adding a restaurant and other involved features.
