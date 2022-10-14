@@ -1,0 +1,41 @@
+USE [Carte]
+GO
+/****** Object:  StoredProcedure [dbo].[OrgInvite_Delete_ByToken]    Script Date: 10/14/2022 2:35:34 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Anthony Lai>
+-- Create date: <09/14/2022>
+-- Description:	<Stored procedure to Create an OrgInvite>
+-- Code Reviewer:
+
+
+-- MODIFIED BY:
+-- MODIFIED DATE:
+-- Code Reviewer:
+-- Note: 
+-- =============================================
+ALTER PROC [dbo].[OrgInvite_Delete_ByToken]
+							@Token uniqueidentifier
+
+AS
+/*
+			DECLARE @Token uniqueidentifier = 'ABD67477-5C1E-4ADA-BDF8-FA48737161AE'
+
+			SELECT * FROM dbo.OrgInvite
+
+			EXECUTE dbo.OrgInvite_Delete_ByToken
+							@Token
+
+			SELECT * FROM dbo.OrgInvite
+*/
+BEGIN
+
+			DELETE
+			FROM [dbo].[OrgInvite]
+
+			 WHERE [Token] = @Token
+
+END
